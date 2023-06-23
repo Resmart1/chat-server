@@ -26,6 +26,7 @@ const io = new Server(server, {
 	cors: {
 		origin: "https://resmart1.github.io/chatmore",
 		methods: ["GET", "POST"],
+		credentials: true
 	}
 });
 
