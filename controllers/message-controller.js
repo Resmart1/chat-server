@@ -1,6 +1,4 @@
 const Message = require('../models/message');
-require('dotenv').config();
-
 
 const handleError = (res, error) => {
 	res.status(500).json({ error });
@@ -30,7 +28,7 @@ const sendMessage = (req, res) => {
 
 const deleteAllMessages = (req, res) => {
 	const { secret } = req.body;
-	if (secret = env.process.SECRET) {
+	if (secret = process.env.SECRET) {
 	Message
 		.deleteMany()
 		.then((data) => {
