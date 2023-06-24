@@ -12,7 +12,7 @@ app.use(messageRoutes);
 mongoose
 	.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then((res) => console.log('Connected to MongoDB'))
-	.catch((err) => console.log(`DB connection error: ${err}`));
+	.catch((err) => console.log(`DB connection error: ${err}`)); 
 
 const http = require('http');
 const server = http.createServer(app);
