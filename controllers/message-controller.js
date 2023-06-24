@@ -29,7 +29,7 @@ const sendMessage = (req, res) => {
 const deleteAllMessages = (req, res) => {
 	const { secret } = req.body;
 	console.log(secret);
-	if (secret = process.env.SECRET) {
+	if (secret === process.env.SECRET) {
 	Message
 		.deleteMany()
 		.then((data) => {
