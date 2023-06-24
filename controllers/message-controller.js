@@ -1,4 +1,5 @@
 const Message = require('../models/message');
+require('dotenv').config();
 
 
 const handleError = (res, error) => {
