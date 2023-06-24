@@ -4,6 +4,7 @@ const cors = require("cors");
 const {
 	getMessages,
 	sendMessage,
+	deleteAllMessages,
 } = require('../controllers/message-controller');
 
 const router = express.Router();
