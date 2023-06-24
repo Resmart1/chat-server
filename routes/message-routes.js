@@ -12,6 +12,6 @@ router.use(cors());
 
 router.get('/list', getMessages);
 router.post('/send', sendMessage);
-router.delete('/delete', deleteAllMessages);
+router.post('/delete', deleteAllMessages);
 
 module.exports = router;
