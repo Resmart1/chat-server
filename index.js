@@ -26,14 +26,14 @@ const io = new Server(server, {
 
 io.on('connection', (socket) => {
 	console.log(`a user connected: ${socket.id}`);
-});
+	
+	socket.on('send_message', (msg) => {
+		socket.broadcast.emit('recieve_message', msg);
+	});
 
-socket.on('send_message', (msg) => {
-	socket.broadcast.emit('recieve_message', msg);
-});
-
-socket.on('disconnect', () => {
-	console.log('user disconnected');
+	socket.on('disconnect', () => {
+		console.log('user disconnected');
+	});
 });
 
 server.listen(process.env.PORT, () => {
