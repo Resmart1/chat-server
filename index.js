@@ -19,7 +19,7 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server, {
 	cors: {
-		origin: ["https://resmart1.github.io/chatmore", "https://resmart1.github.io"],
+		origin: "*",
 		methods: ["GET", "POST"],
 	}
 });
