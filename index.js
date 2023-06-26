@@ -1,7 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const messageRoutes = require("./routes/message-routes");
-const Message = require('./models/message');
 require('dotenv').config();
 
 const app = express();
@@ -26,31 +25,9 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
 	console.log(`a user connected: ${socket.id}`);
 	console.log(`${socket}`);
-	console.log(`${messageRoutes}`);
-	
-	Message
-	.find()
-	.then((messages) => {
-		socket.emit('get_all_messages', [...messages]);
-	})
-	.catch((err) => handleError(res, err));
 	
 	socket.on('send_message', (data) => {
-	if (user.trim() !== '' && message.trim() !== '') {
-	const {user, message} = data;
-	const date = new Date();
-	Message
-		.create({
-			user,
-			message,
-			date		
-		})
-		.then((data) => {
-			console.log('message', data);
-			io.emit('recieve_message', data);
-		})
-		.catch((err) => handleError(res, err));
-	}
+		socket.broadcast.emit('recieve_message', data);
 	});
 
 	socket.on('disconnect', () => {
