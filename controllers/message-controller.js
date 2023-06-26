@@ -14,8 +14,8 @@ const getMessages = (req, res) => {
 }
 
 const sendMessage = (req, res) => {
-	console.log('ee', req.body)
 	const { user, message } = req.body;
+	if (user.trim() !== '' && message.trim() !== '') {
 	Message
 		.create({
 			user,
@@ -26,6 +26,7 @@ const sendMessage = (req, res) => {
 			res.send(data);
 		})
 		.catch((err) => handleError(res, err));
+	}
 }
 
 const deleteAllMessages = (req, res) => {
