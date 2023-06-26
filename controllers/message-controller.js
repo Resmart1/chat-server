@@ -17,10 +17,11 @@ const sendMessage = (req, res) => {
 	console.log('ee', req.body)
 	const { user, message } = req.body;
 	Message
-		.create(
+		.create({
 			user,
 			message,
-			date
+			date		
+		}
 		)
 		.then((data) => {
 			res.send(data);
