@@ -5,6 +5,8 @@ const handleError = (res, error) => {
 }
 
 const getMessages = (req, res) => {
+	console.log('Запрос всех сообщений');
+	
 	Message
 		.find()
 		.then((data) => {
@@ -15,6 +17,8 @@ const getMessages = (req, res) => {
 
 const sendMessage = (req, res) => {
 	const { user, message } = req.body;
+	console.log(`${user} отправил сообщение: ${message}`);
+	
 	if (user.trim() !== '' && message.trim() !== '') {
 	Message
 		.create({
