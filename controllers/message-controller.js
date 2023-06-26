@@ -24,7 +24,7 @@ const sendMessage = (req, res) => {
 			{
 				user,
 				message,
-				date: new ISODate(date),
+				date: new ISODate(),
 			}
 		)
 		.then((data) => {
