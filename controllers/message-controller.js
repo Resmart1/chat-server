@@ -20,7 +20,7 @@ const sendMessage = (req, res) => {
 		.create(
 			user,
 			message,
-			date: new Date(),
+			date
 		)
 		.then((data) => {
 			res.send(data);
