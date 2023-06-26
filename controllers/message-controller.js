@@ -17,12 +17,14 @@ const sendMessage = (req, res) => {
 	console.log('ee', req.body)
 	const { user, message } = req.body;
 	const date = new Date();
+	console.log('date', date);
+	console.log('dateType', typeof date);
 	Message
 		.create(
 			{
 				user,
 				message,
-				date
+				date: ISODate(date),
 			}
 		)
 		.then((data) => {
