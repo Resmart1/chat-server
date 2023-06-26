@@ -16,7 +16,7 @@ const getMessages = (req, res) => {
 const sendMessage = (req, res) => {
 	console.log('ee', req.body)
 	const { user, message } = req.body;
-	const date = new Date(hour[, minute]);
+	const date = new Date(hour, minute);
 	Message
 		.create(
 			{
