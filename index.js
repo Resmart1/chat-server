@@ -1,13 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const messageRoutes = require("./routes/message-routes");
+const Message = require('../models/message');
 require('dotenv').config();
-// const cors = require("cors");
 
 const app = express();
 app.use(express.json());
 app.use(messageRoutes);
-// app.use(cors());
 
 mongoose
 	.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -31,7 +30,7 @@ io.on('connection', (socket) => {
 	Message
 	.find()
 	.then((data) => {
-		res.send({ status: "ok", data: data });
+		io.emit('get_all_messages', messages);
 	})
 	.catch((err) => handleError(res, err));
 	
