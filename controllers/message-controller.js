@@ -16,9 +16,14 @@ const getMessages = (req, res) => {
 const sendMessage = (req, res) => {
 	console.log('ee', req.body)
 	const { user, message } = req.body;
+	const date = new Date();
 	Message
 		.create(
-			req.body
+			{
+				user,
+				message,
+				date
+			}
 		)
 		.then((data) => {
 			res.send(data);
