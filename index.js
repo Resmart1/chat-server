@@ -30,7 +30,7 @@ io.on('connection', (socket) => {
 	
 	Message
 	.find()
-	.then((data) => {
+	.then((messages) => {
 		socket.emit('get_all_messages', messages);
 	})
 	.catch((err) => handleError(res, err));
