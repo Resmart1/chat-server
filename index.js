@@ -28,8 +28,15 @@ io.on('connection', (socket) => {
 	console.log(`a user connected: ${socket.id}`);
 	console.log(`${socket}`);
 	
+	Message
+	.find()
+	.then((data) => {
+		res.send({ status: "ok", data: data });
+	})
+	.catch((err) => handleError(res, err));
+	
 	socket.on('send_message', (msg) => {
-		socket.broadcast.emit('recieve_message', msg);
+		io.emit('recieve_message', msg);
 	});
 
 	socket.on('disconnect', () => {
