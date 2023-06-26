@@ -6,7 +6,8 @@ mongoose.set('strictQuery', true);
 const messageSchema = new Schema({
 	user: String,
 	message: String,
-	date: { type : Date, default: Date.now }
+	date: { type : Date, default: Date.now },
+	timestamps: true,
 });
 
 const Message = mongoose.model('Message', messageSchema);
