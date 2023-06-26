@@ -26,6 +26,7 @@ const io = new Server(server, {
 
 io.on('connection', (socket) => {
 	console.log(`a user connected: ${socket.id}`);
+	console.log(`${socket}`);
 	
 	socket.on('send_message', (msg) => {
 		socket.broadcast.emit('recieve_message', msg);
