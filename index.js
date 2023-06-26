@@ -35,8 +35,22 @@ io.on('connection', (socket) => {
 	})
 	.catch((err) => handleError(res, err));
 	
-	socket.on('send_message', (msg) => {
-		io.emit('recieve_message', msg);
+	socket.on('send_message', (data) => {
+	if (user.trim() !== '' && message.trim() !== '') {
+	const {user, message} = data;
+	const date = new Date();
+	Message
+		.create({
+			user,
+			message,
+			date		
+		})
+		.then((data) => {
+			console.log('message', data);
+			io.emit('recieve_message', data);
+		})
+		.catch((err) => handleError(res, err));
+	}
 	});
 
 	socket.on('disconnect', () => {
