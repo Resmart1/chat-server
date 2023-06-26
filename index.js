@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const messageRoutes = require("./routes/message-routes");
-const Message = require('../models/message');
+const Message = require('./models/message');
 require('dotenv').config();
 
 const app = express();
@@ -26,6 +26,7 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
 	console.log(`a user connected: ${socket.id}`);
 	console.log(`${socket}`);
+	console.log(`${messageRoutes}`);
 	
 	Message
 	.find()
