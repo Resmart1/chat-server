@@ -11,10 +11,6 @@ mongoose
 	.then((res) => console.log('Connected to MongoDB'))
 	.catch((err) => console.log(`DB connection error: ${err}`)); 
 
-app.listen(3000, (err) => {
-	err ? console.log(err) : console.log(`listening port ${process.env.PORT}`);
-});
-
 const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
