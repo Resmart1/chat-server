@@ -10,7 +10,7 @@ app.use(cookieParser());
 
 app.get('/remind', async (req, res) => {
 	console.log('Cookies: ', req.cookies)
-}
+});
 
 mongoose
 	.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
