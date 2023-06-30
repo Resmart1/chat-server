@@ -9,7 +9,8 @@ app.use(messageRoutes);
 app.use(cookieParser());
 
 app.get('/remind', async (req, res) => {
-	console.log('Cookies: ', req.cookies)
+	console.log('Cookies: ', req.cookies);
+	return
 });
 
 mongoose
