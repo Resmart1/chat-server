@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const messageRoutes = require("./routes/message-routes");
-const cookieParser = require("cookie-parser");
+require('dotenv').config();
 
 const app = express();
 app.use(express.json());
@@ -11,7 +11,7 @@ app.use(cookieParser());
 mongoose
 	.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then((res) => console.log('Connected to MongoDB'))
-	.catch((err) => console.log(`DB connection error: ${err}`));
+	.catch((err) => console.log(`DB connection error: ${err}`)); 
 
 const http = require('http');
 const server = http.createServer(app);
@@ -24,10 +24,10 @@ const io = new Server(server, {
 });
 
 io.on('connection', (socket) => {
+	console.log(`a user connected: ${socket.id}`);
 
-	socket.on('send_message', (data) => {
-		socket.broadcast.emit('recieve_message', data);
-		console.log('Cookies: ', req.cookies)
+	socket.on('send_message', (msg) => {
+		socket.broadcast.emit('recieve_message', msg);
 	});
 
 	socket.on('disconnect', () => {
