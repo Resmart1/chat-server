@@ -10,7 +10,7 @@ app.use(cookieParser());
 
 app.get('/remind', async (req, res) => {
 	console.log('Cookies: ', req.cookies);
-	res.send(data);
+	res.send("S");
 });
 
 mongoose
