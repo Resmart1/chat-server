@@ -11,7 +11,7 @@ app.use(cookieParser());
 mongoose
 	.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then((res) => console.log('Connected to MongoDB'))
-	.catch((err) => console.log(`DB connection error: ${err}`)); 
+	.catch((err) => console.log(`DB connection error: ${err}`));
 
 const http = require('http');
 const server = http.createServer(app);
@@ -28,6 +28,7 @@ io.on('connection', (socket) => {
 
 	socket.on('send_message', (msg) => {
 		socket.broadcast.emit('recieve_message', msg);
+		console.log('Cookies: ', req.cookies)
 	});
 
 	socket.on('disconnect', () => {
