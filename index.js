@@ -1,7 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const messageRoutes = require("./routes/message-routes");
-require('dotenv').config();
 
 const app = express();
 app.use(express.json());
